@@ -13,7 +13,8 @@ import { startCronJobs } from './services/cron';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173', credentials: true }));
+const clientOrigin = (process.env.CLIENT_URL || 'http://localhost:5173').replace(/\/$/, '');
+app.use(cors({ origin: clientOrigin, credentials: true }));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
