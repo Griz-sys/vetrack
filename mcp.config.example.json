@@ -1,0 +1,12 @@
+{
+  "_comment": "Add this block to your Claude Desktop config at ~/Library/Application Support/Claude/claude_desktop_config.json (macOS) or %APPDATA%/Claude/claude_desktop_config.json (Windows)",
+  "mcpServers": {
+    "worktrack": {
+      "command": "node",
+      "args": ["C:/path/to/VeBOX/server/dist/mcp.js"],
+      "env": {
+        "DATABASE_URL": "postgresql://user:password@localhost:5432/worktrack"
+      }
+    }
+  }
+}

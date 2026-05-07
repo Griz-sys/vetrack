@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm create *)",
+      "Bash(npx tsc *)",
+      "Bash(DATABASE_URL=\"postgresql://dummy:dummy@localhost:5432/dummy\" npx prisma generate)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5173)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Aryan\\\\Desktop\\\\WORK\\\\VeBOX\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Select-Object -First 20)",
+      "Bash(Format-Table FullName)"
+    ]
+  }
+}

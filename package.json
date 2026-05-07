@@ -1,0 +1,21 @@
+{
+  "name": "worktrack",
+  "version": "1.0.0",
+  "description": "WorkTrack — internal employee activity tracker",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "setup": "npm run install:all && npm run prisma:migrate && npm run prisma:seed",
+    "prisma:migrate": "npm run prisma:migrate --prefix server",
+    "prisma:seed": "npm run prisma:seed --prefix server",
+    "prisma:generate": "npm run prisma:generate --prefix server",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "mcp": "npm run mcp --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

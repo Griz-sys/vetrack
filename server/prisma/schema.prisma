@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String     @id @default(uuid())
+  name         String
+  email        String     @unique
+  password     String
+  role         Role       @default(USER)
+  team         Team
+  defaultHrs   Float      @default(8)
+  activities   Activity[]
+  assignedTasks Task[]    @relation("AssignedTasks")
+  createdTasks  Task[]    @relation("CreatedTasks")
+  adminAssignments   AdminUserAssignment[] @relation("UserAssignments")
+  managedAssignments AdminUserAssignment[] @relation("AdminAssignments")
+  createdAt    DateTime   @default(now())
+}
+
+model AdminUserAssignment {
+  adminId String
+  userId  String
+  admin   User   @relation("AdminAssignments", fields: [adminId], references: [id], onDelete: Cascade)
+  user    User   @relation("UserAssignments", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([adminId, userId])
+}
+
+model Project {
+  id         String     @id @default(uuid())
+  name       String
+  team       Team
+  status     Status     @default(ACTIVE)
+  startDate  DateTime
+  deadline   DateTime
+  createdAt  DateTime   @default(now())
+  subtasks   Subtask[]
+  activities Activity[]
+}
+
+model Subtask {
+  id         String     @id @default(uuid())
+  name       String
+  projectId  String
+  project    Project    @relation(fields: [projectId], references: [id])
+  assignedTo String?
+  progress   Int        @default(0)
+  activities Activity[]
+}
+
+model Activity {
+  id          String       @id @default(uuid())
+  userId      String
+  user        User         @relation(fields: [userId], references: [id])
+  date        DateTime
+  type        ActivityType
+  projectId   String?
+  project     Project?     @relation(fields: [projectId], references: [id])
+  subtaskId   String?
+  subtask     Subtask?     @relation(fields: [subtaskId], references: [id])
+  hours       Float
+  notes       String?
+  blocker     String?
+  meetingType String?
+  createdAt   DateTime     @default(now())
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  dueDate     DateTime
+  userId      String
+  user        User     @relation("AssignedTasks", fields: [userId], references: [id])
+  createdById String
+  createdBy   User     @relation("CreatedTasks", fields: [createdById], references: [id])
+  notes       String?
+  done        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+  DEV
+}
+
+enum Team {
+  DEV
+  CIVIL
+  ADMIN
+  DESIGN
+  MARKETING
+}
+
+enum Status {
+  ACTIVE
+  ARCHIVED
+}
+
+enum ActivityType {
+  PROJECT
+  MEETING
+  ADMIN
+}

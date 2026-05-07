@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F0F0F0;
+    color: #121212;
+    -webkit-font-smoothing: antialiased;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+  }
+  select option {
+    background-color: #fff;
+    color: #121212;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #121212 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #121212;
+    border-radius: 0;
+  }
+  .shadow-hard-sm {
+    box-shadow: 3px 3px 0px 0px #121212;
+  }
+  .shadow-hard {
+    box-shadow: 6px 6px 0px 0px #121212;
+  }
+  .shadow-hard-lg {
+    box-shadow: 8px 8px 0px 0px #121212;
+  }
+}
