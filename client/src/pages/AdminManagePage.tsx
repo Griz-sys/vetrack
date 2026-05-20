@@ -92,16 +92,16 @@ export default function AdminManagePage() {
     const canModify = isDev && u.role !== 'DEV';
 
     return (
-      <div className={`flex items-center gap-3 bg-white border-4 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-4 py-3 flex-wrap transition-colors ${isConfirming ? 'border-[#D02020] shadow-[4px_4px_0px_0px_#D02020]' : ''}`}>
+      <div className={`flex items-center gap-3 bg-white border border-[#E0E0E0] px-4 py-3 flex-wrap transition-colors ${isConfirming ? '!border-[#D02020]/50 bg-[#FFF5F5]' : 'hover:border-[#CCCCCC]'}`}>
         {/* Avatar */}
-        <div className={`w-10 h-10 flex items-center justify-center text-sm font-black border-2 border-[#121212] flex-shrink-0 ${tc.badge}`}>
+        <div className={`w-10 h-10 flex items-center justify-center text-sm font-bold flex-shrink-0 rounded-sm ${tc.badge}`}>
           {getInitials(u.name)}
         </div>
 
         {/* Name + email */}
         <div className="flex-1 min-w-[140px]">
-          <div className="font-black text-[#121212] uppercase tracking-tight truncate">{u.name}</div>
-          <div className="text-xs text-[#121212]/40 font-medium truncate">{u.email}</div>
+          <div className="font-semibold text-[#121212] tracking-tight truncate">{u.name}</div>
+          <div className="text-xs text-[#121212]/40 font-normal truncate">{u.email}</div>
         </div>
 
         {isDev ? (
@@ -220,7 +220,7 @@ export default function AdminManagePage() {
           )
         ) : (
           <div className="flex items-center gap-2 flex-shrink-0 flex-wrap">
-            <span className={`text-xs px-2 py-0.5 font-black uppercase tracking-wider border border-[#121212] ${tc.badge}`}>
+            <span className={`text-xs px-2 py-0.5 font-medium uppercase tracking-wider border ${tc.tag}`}>
               {teamLabel(u.team)}
             </span>
             <span className="text-xs font-bold text-[#121212]/40 uppercase tracking-wide">
@@ -237,7 +237,7 @@ export default function AdminManagePage() {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-3 border-b-4 border-[#121212] bg-white">
+      <div className="flex items-center justify-between px-5 py-3 border-b-2 border-[#121212] bg-white">
         <div>
           <h1 className="text-lg font-black uppercase tracking-tight text-[#121212]">User Management</h1>
           <p className="text-sm text-[#121212]/50 font-medium mt-0.5">
@@ -259,7 +259,7 @@ export default function AdminManagePage() {
         {loading ? (
           <div className="space-y-3">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-16 bg-white border-4 border-[#121212] animate-pulse" />
+              <div key={i} className="h-16 bg-white border border-[#E0E0E0] animate-pulse" />
             ))}
           </div>
         ) : (
@@ -267,7 +267,7 @@ export default function AdminManagePage() {
             {/* Admins & Dev — DEV only */}
             {isDev && (
               <div>
-                <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-4 border-[#121212] pb-2 mb-3">
+                <h2 className="text-xs font-semibold uppercase tracking-widest text-[#121212]/50 border-b border-[#E0E0E0] pb-2 mb-3">
                   Admins & Superuser
                 </h2>
                 <div className="space-y-2">
@@ -280,13 +280,13 @@ export default function AdminManagePage() {
 
             {/* Users */}
             <div>
-              <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-4 border-[#121212] pb-2 mb-3">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-[#121212]/50 border-b border-[#E0E0E0] pb-2 mb-3">
                 {isDev ? 'Users' : 'Your Team Members'}
               </h2>
               {regularUsers.length === 0 ? (
                 <div
                   onClick={() => setShowCreate(true)}
-                  className="bg-white border-4 border-dashed border-[#121212]/30 py-10 text-center cursor-pointer hover:border-[#1040C0]/50 hover:bg-[#F0F8FF] transition-colors"
+                  className="bg-white border-2 border-dashed border-[#121212]/30 py-10 text-center cursor-pointer hover:border-[#1040C0]/50 hover:bg-[#F0F8FF] transition-colors"
                 >
                   <div className="flex justify-center gap-2 mb-3">
                     <div className="w-5 h-5 bg-[#1040C0] border-2 border-[#121212]" />

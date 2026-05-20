@@ -20,14 +20,14 @@ export function formatHours(h: number): string {
   return `${hrs}h ${mins}m`;
 }
 
-const TEAM_MAP: Record<string, { hex: string; badge: string; chip: string; bar: string; border: string }> = {
-  DEV:       { hex: '#1040C0', badge: 'bg-[#1040C0] text-white', chip: 'bg-[#1040C0] text-white', bar: 'bg-[#1040C0]', border: 'border-[#1040C0]' },
-  CIVIL:     { hex: '#107050', badge: 'bg-[#107050] text-white', chip: 'bg-[#107050] text-white', bar: 'bg-[#107050]', border: 'border-[#107050]' },
-  ADMIN:     { hex: '#C05810', badge: 'bg-[#C05810] text-white', chip: 'bg-[#C05810] text-white', bar: 'bg-[#C05810]', border: 'border-[#C05810]' },
-  DESIGN:    { hex: '#7020A0', badge: 'bg-[#7020A0] text-white', chip: 'bg-[#7020A0] text-white', bar: 'bg-[#7020A0]', border: 'border-[#7020A0]' },
-  MARKETING: { hex: '#006878', badge: 'bg-[#006878] text-white', chip: 'bg-[#006878] text-white', bar: 'bg-[#006878]', border: 'border-[#006878]' },
+const TEAM_MAP: Record<string, { hex: string; badge: string; chip: string; bar: string; border: string; tag: string }> = {
+  DEV:       { hex: '#1040C0', badge: 'bg-[#2448AC] text-white', chip: 'bg-[#2448AC] text-white', bar: 'bg-[#2448AC]', border: 'border-[#2448AC]', tag: 'bg-[#E8EEF8] text-[#1040C0] border-[#1040C0]/30' },
+  CIVIL:     { hex: '#107050', badge: 'bg-[#1C634C] text-white', chip: 'bg-[#1C634C] text-white', bar: 'bg-[#1C634C]', border: 'border-[#1C634C]', tag: 'bg-[#E0F0E8] text-[#107050] border-[#107050]/30' },
+  ADMIN:     { hex: '#C05810', badge: 'bg-[#AB5D24] text-white', chip: 'bg-[#AB5D24] text-white', bar: 'bg-[#AB5D24]', border: 'border-[#AB5D24]', tag: 'bg-[#F5EAE0] text-[#C05810] border-[#C05810]/30' },
+  DESIGN:    { hex: '#7020A0', badge: 'bg-[#6C338D] text-white', chip: 'bg-[#6C338D] text-white', bar: 'bg-[#6C338D]', border: 'border-[#6C338D]', tag: 'bg-[#F0E6F7] text-[#7020A0] border-[#7020A0]/30' },
+  MARKETING: { hex: '#006878', badge: 'bg-[#0D5E6B] text-white', chip: 'bg-[#0D5E6B] text-white', bar: 'bg-[#0D5E6B]', border: 'border-[#0D5E6B]', tag: 'bg-[#E0EEF0] text-[#006878] border-[#006878]/30' },
 };
-const FALLBACK_TEAM = { hex: '#121212', badge: 'bg-[#121212] text-white', chip: 'bg-[#121212] text-white', bar: 'bg-[#121212]', border: 'border-[#121212]' };
+const FALLBACK_TEAM = { hex: '#121212', badge: 'bg-[#3A3A3A] text-white', chip: 'bg-[#3A3A3A] text-white', bar: 'bg-[#3A3A3A]', border: 'border-[#3A3A3A]', tag: 'bg-[#E8E8E8] text-[#121212] border-[#121212]/30' };
 
 export function getTeamColors(team: string) {
   return TEAM_MAP[team] ?? FALLBACK_TEAM;

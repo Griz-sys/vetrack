@@ -22,7 +22,7 @@ export default function ProjectDetailPage() {
     return (
       <div className="p-5 space-y-4 bg-[#F0F0F0] h-full">
         {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="h-20 bg-white border-4 border-[#121212] animate-pulse" />
+          <div key={i} className="h-20 bg-white border-2 border-[#121212] animate-pulse" />
         ))}
       </div>
     );
@@ -49,7 +49,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="flex flex-col h-full overflow-auto bg-[#F0F0F0]">
       {/* Header */}
-      <div className="px-5 py-4 border-b-4 border-[#121212] bg-white">
+      <div className="px-5 py-4 border-b-2 border-[#121212] bg-white">
         <button
           onClick={() => navigate('/projects')}
           className="flex items-center gap-1 text-xs font-black uppercase tracking-wider text-[#121212]/50 hover:text-[#121212] mb-4 transition-colors"
@@ -78,7 +78,7 @@ export default function ProjectDetailPage() {
             </div>
           </div>
           {/* Big progress number */}
-          <div className={`flex-shrink-0 w-20 h-20 border-4 border-[#121212] flex flex-col items-center justify-center shadow-[4px_4px_0px_0px_#121212] ${
+          <div className={`flex-shrink-0 w-20 h-20 border-2 border-[#121212] flex flex-col items-center justify-center shadow-[4px_4px_0px_0px_#121212] ${
             overdue ? 'bg-[#D02020]' : days < 14 && avgProgress < 70 ? 'bg-[#F0C020]' : 'bg-[#1040C0]'
           }`}>
             <div className={`text-2xl font-black leading-none ${
@@ -105,10 +105,10 @@ export default function ProjectDetailPage() {
         {/* Subtasks */}
         {project.subtasks.length > 0 && (
           <div>
-            <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-4 border-[#121212] pb-2 mb-3">
+            <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-2 border-[#121212] pb-2 mb-3">
               Sub-tasks
             </h2>
-            <div className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212]">
+            <div className="bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212]">
               {project.subtasks.map((s, i) => (
                 <div key={s.id} className={`flex items-center gap-3 px-4 py-3 ${i > 0 ? 'border-t-2 border-[#121212]' : ''}`}>
                   <div className="w-4 h-4 flex-shrink-0 border-2 border-[#121212]" style={{ backgroundColor: getSubtaskColor(i) }} />
@@ -127,15 +127,15 @@ export default function ProjectDetailPage() {
 
         {/* Work log */}
         <div>
-          <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-4 border-[#121212] pb-2 mb-3">
+          <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-2 border-[#121212] pb-2 mb-3">
             Work Log
           </h2>
           {project.activities.length === 0 ? (
-            <div className="bg-white border-4 border-dashed border-[#121212]/30 py-10 text-center">
+            <div className="bg-white border-2 border-dashed border-[#121212]/30 py-10 text-center">
               <p className="text-sm font-bold text-[#121212]/40 uppercase tracking-wider">No activities logged yet</p>
             </div>
           ) : (
-            <div className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212]">
+            <div className="bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212]">
               {project.activities.map((act, i) => (
                 <div key={act.id} className={`flex items-start gap-3 px-4 py-3 ${i > 0 ? 'border-t-2 border-[#121212]' : ''}`}>
                   <div className={`w-8 h-8 flex items-center justify-center text-xs font-black border-2 border-[#121212] flex-shrink-0 ${

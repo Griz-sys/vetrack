@@ -72,7 +72,7 @@ export default function CalendarPage() {
   }
 
   const weekNavBar = (
-    <div className="flex items-center justify-between px-5 py-3 border-b-4 border-[#121212] bg-white flex-shrink-0">
+    <div className="flex items-center justify-between px-5 py-3 border-b-2 border-[#121212] bg-white flex-shrink-0">
       <div className="flex items-center gap-3">
         <h1 className="text-lg font-black uppercase tracking-tight text-[#121212]">
           {isUser ? 'My Week' : 'Team Calendar'}
@@ -126,7 +126,7 @@ export default function CalendarPage() {
           </button>
           <button
             onClick={() => setWeekBase(new Date())}
-            className="ml-1 px-3 py-2 bg-[#F0C020] text-[#121212] border-2 border-[#121212] text-xs font-black uppercase tracking-wider shadow-[3px_3px_0px_0px_#121212] hover:bg-[#F0C020]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
+            className="ml-1 px-3 py-2 bg-[#F5C400] text-[#121212] border-2 border-[#121212] text-xs font-black uppercase tracking-wider shadow-[3px_3px_0px_0px_#121212] hover:bg-[#F5C400]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
           >
             Today
           </button>
@@ -165,7 +165,7 @@ export default function CalendarPage() {
           {loading ? (
             <div className="grid grid-cols-7 gap-3 h-full">
               {Array.from({ length: 7 }).map((_, i) => (
-                <div key={i} className="bg-white border-4 border-[#121212] shadow-[4px_4px_0px_0px_#121212] animate-pulse min-h-[200px]" />
+                <div key={i} className="bg-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] animate-pulse min-h-[200px]" />
               ))}
             </div>
           ) : (
@@ -182,7 +182,7 @@ export default function CalendarPage() {
                 return (
                   <div
                     key={day.toISOString()}
-                    className={`flex flex-col border-4 border-[#121212] cursor-pointer transition-transform hover:-translate-y-0.5 ${
+                    className={`flex flex-col border-2 border-[#121212] cursor-pointer transition-transform hover:-translate-y-0.5 ${
                       isToday
                         ? 'shadow-[6px_6px_0px_0px_#1040C0]'
                         : weekend
@@ -196,12 +196,12 @@ export default function CalendarPage() {
                     })}
                   >
                     {/* Day header */}
-                    <div className={`px-3 py-2 border-b-4 border-[#121212] ${
+                    <div className={`px-3 py-2 border-b-2 border-[#121212] ${
                       isToday
                         ? 'bg-[#1040C0] text-white'
                         : weekend
                         ? 'bg-[#E0E0E0] text-[#121212]'
-                        : 'bg-[#F0C020] text-[#121212]'
+                        : 'bg-[#FFF9E0] text-[#121212]'
                     }`}>
                       <div className="text-xs font-black uppercase tracking-widest opacity-70">
                         {format(day, 'EEE')}
@@ -250,7 +250,7 @@ export default function CalendarPage() {
                     {/* Footer */}
                     {totalHrs > 0 && (
                       <div className={`px-3 py-1.5 border-t-2 border-[#121212] text-right ${
-                        isToday ? 'bg-[#1040C0]/10' : weekend ? 'bg-[#E0E0E0]/40' : 'bg-[#F0C020]/20'
+                        isToday ? 'bg-[#1040C0]/10' : weekend ? 'bg-[#E0E0E0]/40' : 'bg-[#FFF9E0]'
                       }`}>
                         <span className="text-xs font-black text-[#121212]/60">{formatHours(totalHrs)}</span>
                       </div>
@@ -291,7 +291,7 @@ export default function CalendarPage() {
         <table className="w-full border-collapse" style={{ minWidth: '860px' }}>
           <thead>
             <tr>
-              <th className="text-left px-4 py-3 text-xs font-black text-[#121212] uppercase tracking-widest w-40 border-b-4 border-r-2 border-[#121212] sticky left-0 bg-[#F0C020] z-10">
+              <th className="text-left px-4 py-3 text-xs font-black text-[#121212] uppercase tracking-widest w-40 border-b-2 border-r-2 border-[#121212] sticky left-0 bg-[#FFF9E0] z-10">
                 Member
               </th>
               {weekDays.map((day) => {
@@ -300,10 +300,10 @@ export default function CalendarPage() {
                 return (
                   <th
                     key={day.toISOString()}
-                    className={`text-center px-2 py-3 text-xs font-black uppercase tracking-widest border-b-4 border-r-2 border-[#121212] last:border-r-0 ${
+                    className={`text-center px-2 py-3 text-xs font-black uppercase tracking-widest border-b-2 border-r-2 border-[#121212] last:border-r-0 ${
                       isToday ? 'bg-[#1040C0] text-white'
                       : weekend ? 'bg-[#E0E0E0] text-[#121212]/60'
-                      : 'bg-[#F0C020] text-[#121212]'
+                      : 'bg-[#FFF9E0] text-[#121212]'
                     }`}
                   >
                     <div className="opacity-70">{format(day, 'EEE')}</div>

@@ -34,7 +34,7 @@ export default function EmployeeDetailPage() {
     return (
       <div className="p-5 space-y-4 bg-[#F0F0F0] h-full">
         {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="h-20 bg-white border-4 border-[#121212] animate-pulse" />
+          <div key={i} className="h-20 bg-white border-2 border-[#121212] animate-pulse" />
         ))}
       </div>
     );
@@ -58,7 +58,7 @@ export default function EmployeeDetailPage() {
   return (
     <div className="flex flex-col h-full overflow-auto bg-[#F0F0F0]">
       {/* Header */}
-      <div className="px-5 py-4 border-b-4 border-[#121212] bg-white">
+      <div className="px-5 py-4 border-b-2 border-[#121212] bg-white">
         <button
           onClick={() => navigate('/team')}
           className="flex items-center gap-1 text-xs font-black uppercase tracking-wider text-[#121212]/50 hover:text-[#121212] mb-4 transition-colors"
@@ -69,14 +69,14 @@ export default function EmployeeDetailPage() {
           Back to Team
         </button>
         <div className="flex items-center gap-4">
-          <div className={`w-16 h-16 flex items-center justify-center text-xl font-black border-4 border-[#121212] shadow-[4px_4px_0px_0px_#121212] flex-shrink-0 ${tc.badge}`}>
+          <div className={`w-16 h-16 flex items-center justify-center text-xl font-black border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] flex-shrink-0 ${tc.badge}`}>
             {getInitials(member.name)}
           </div>
           <div>
             <h1 className="text-2xl font-black uppercase tracking-tight text-[#121212]">{member.name}</h1>
             <div className="flex items-center gap-2 mt-1">
               <span className="text-sm text-[#121212]/50 font-medium capitalize">{member.role.toLowerCase()}</span>
-              <span className={`text-xs px-2 py-0.5 font-black uppercase tracking-wider border border-[#121212] ${tc.badge}`}>
+              <span className={`text-xs px-2 py-0.5 font-bold uppercase tracking-wider border ${tc.tag}`}>
                 {member.team}
               </span>
             </div>
@@ -92,7 +92,7 @@ export default function EmployeeDetailPage() {
             { label: 'Active Projects', value: String(projectCount), bg: 'bg-[#F0C020]', text: 'text-[#121212]' },
             { label: 'Open Blockers', value: String(blockerCount), bg: blockerCount > 0 ? 'bg-[#D02020]' : 'bg-white', text: blockerCount > 0 ? 'text-white' : 'text-[#121212]' },
           ].map((s) => (
-            <div key={s.label} className={`border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-4 text-center ${s.bg}`}>
+            <div key={s.label} className={`border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-4 text-center ${s.bg}`}>
               <div className={`text-3xl font-black ${s.text}`}>{s.value}</div>
               <div className={`text-xs font-black uppercase tracking-widest mt-1 ${s.text} opacity-70`}>{s.label}</div>
             </div>
@@ -101,10 +101,10 @@ export default function EmployeeDetailPage() {
 
         {/* Week bar chart */}
         <div>
-          <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-4 border-[#121212] pb-2 mb-3">
+          <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-2 border-[#121212] pb-2 mb-3">
             This Week
           </h2>
-          <div className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5">
+          <div className="bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5">
             <div className="flex items-end gap-3 h-28">
               {weekDays.map((day, i) => {
                 const hrs = getDayHours(day);
@@ -134,15 +134,15 @@ export default function EmployeeDetailPage() {
 
         {/* Activity log */}
         <div>
-          <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-4 border-[#121212] pb-2 mb-3">
+          <h2 className="text-xs font-black uppercase tracking-widest text-[#121212] border-b-2 border-[#121212] pb-2 mb-3">
             Activity Log
           </h2>
           {activities.length === 0 ? (
-            <div className="bg-white border-4 border-dashed border-[#121212]/30 py-10 text-center">
+            <div className="bg-white border-2 border-dashed border-[#121212]/30 py-10 text-center">
               <p className="text-sm font-bold text-[#121212]/40 uppercase tracking-wider">No activities this week</p>
             </div>
           ) : (
-            <div className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212]">
+            <div className="bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212]">
               {activities.map((act, i) => (
                 <div key={act.id} className={`flex items-start gap-3 px-4 py-3 ${i > 0 ? 'border-t-2 border-[#121212]' : ''}`}>
                   <div className="flex-1 min-w-0">

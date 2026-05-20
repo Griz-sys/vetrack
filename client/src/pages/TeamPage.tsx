@@ -42,16 +42,16 @@ export default function TeamPage() {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="px-5 py-3 border-b-4 border-[#121212] bg-white">
+      <div className="px-5 py-3 border-b border-[#E8E8E8] bg-white">
         <h1 className="text-lg font-black uppercase tracking-tight text-[#121212]">Team</h1>
-        <p className="text-sm text-[#121212]/50 font-medium mt-0.5">{members.length} members · Dev & Civil</p>
+        <p className="text-sm text-[#121212]/40 font-normal mt-0.5">{members.length} members · Dev & Civil</p>
       </div>
 
       <div className="flex-1 overflow-auto p-5 bg-[#F0F0F0]">
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5 animate-pulse">
+              <div key={i} className="bg-white border border-[#E8E8E8] p-5 animate-pulse">
                 <div className="flex gap-3 mb-4">
                   <div className="w-14 h-14 bg-[#E0E0E0]" />
                   <div className="flex-1 space-y-2">
@@ -76,37 +76,37 @@ export default function TeamPage() {
                 <div
                   key={m.id}
                   onClick={() => navigate(`/team/${m.id}`)}
-                  className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5 cursor-pointer hover:-translate-y-1 transition-transform"
+                  className="bg-white border border-[#E8E8E8] p-5 cursor-pointer hover:border-[#CCCCCC] hover:shadow-md transition-all duration-150"
                 >
                   {/* Avatar + name */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-14 h-14 flex items-center justify-center text-lg font-black border-4 border-[#121212] flex-shrink-0 ${tc.badge}`}>
+                    <div className={`w-14 h-14 flex items-center justify-center text-lg font-black rounded-sm flex-shrink-0 ${tc.badge}`}>
                       {getInitials(m.name)}
                     </div>
                     <div className="min-w-0">
-                      <div className="font-black text-[#121212] text-base truncate uppercase tracking-tight">{m.name}</div>
+                      <div className="font-semibold text-[#121212] text-base truncate">{m.name}</div>
                       <div className="text-xs text-[#121212]/50 font-medium capitalize">{m.role.toLowerCase()}</div>
-                      <span className={`inline-block mt-1 text-xs px-2 py-0.5 font-black uppercase tracking-wider border border-[#121212] ${tc.badge}`}>
+                      <span className={`inline-block mt-1 text-xs px-2 py-0.5 font-bold uppercase tracking-wider border ${tc.tag}`}>
                         {m.team}
                       </span>
                     </div>
                   </div>
 
                   {/* Stats */}
-                  <div className="grid grid-cols-3 gap-2 border-t-2 border-[#121212] pt-3">
+                  <div className="grid grid-cols-3 gap-2 border-t border-[#F0F0F0] pt-3">
                     <div className="text-center">
-                      <div className="text-xl font-black text-[#1040C0]">{formatHours(weekHrs)}</div>
-                      <div className="text-xs font-bold text-[#121212]/50 uppercase tracking-wide mt-0.5">Week</div>
-                    </div>
-                    <div className="text-center border-x-2 border-[#121212]">
-                      <div className="text-xl font-black text-[#121212]">{projects}</div>
-                      <div className="text-xs font-bold text-[#121212]/50 uppercase tracking-wide mt-0.5">Projects</div>
+                      <div className="text-lg font-bold text-[#1040C0]">{formatHours(weekHrs)}</div>
+                      <div className="text-xs text-[#121212]/40 mt-0.5">Week</div>
                     </div>
                     <div className="text-center">
-                      <div className={`text-xl font-black ${blockers > 0 ? 'text-[#D02020]' : 'text-[#121212]'}`}>
+                      <div className="text-lg font-bold text-[#121212]">{projects}</div>
+                      <div className="text-xs text-[#121212]/40 mt-0.5">Projects</div>
+                    </div>
+                    <div className="text-center">
+                      <div className={`text-lg font-bold ${blockers > 0 ? 'text-[#D02020]' : 'text-[#121212]'}`}>
                         {blockers}
                       </div>
-                      <div className="text-xs font-bold text-[#121212]/50 uppercase tracking-wide mt-0.5">Blockers</div>
+                      <div className="text-xs text-[#121212]/40 mt-0.5">Blockers</div>
                     </div>
                   </div>
                 </div>

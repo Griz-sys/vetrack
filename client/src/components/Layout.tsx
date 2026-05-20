@@ -104,9 +104,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen bg-[#F0F0F0] overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-60 flex-shrink-0 bg-white border-r-4 border-[#121212] flex flex-col">
+      <aside className="w-60 flex-shrink-0 bg-white border-r-2 border-[#121212] flex flex-col">
         {/* Logo Header */}
-        <div className="px-7 py-[19px] flex items-center border-b-4 border-[#121212] bg-white">
+        <div className="px-7 py-[19px] flex items-center border-b-2 border-[#121212] bg-white">
           <div className="flex items-center gap-[10px]">
             {/* Shapes */}
             <div className="flex items-center gap-[5px] flex-shrink-0">
@@ -144,10 +144,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               to={item.to}
               end={item.to === "/"}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-3 border-2 font-bold uppercase tracking-wider text-sm transition-all duration-150 ${
+                `flex items-center gap-3 px-3 py-3 border-l-4 font-bold uppercase tracking-wider text-sm transition-all duration-150 ${
                   isActive
-                    ? "bg-[#F0C020] border-[#121212] shadow-[3px_3px_0px_0px_#121212] text-[#121212]"
-                    : "border-transparent text-[#121212]/50 hover:bg-[#F0F0F0] hover:border-[#121212] hover:text-[#121212]"
+                    ? "border-l-[#F5C400] bg-[#FFF9E0] text-[#121212]"
+                    : "border-l-transparent text-[#121212]/50 hover:bg-[#F0F0F0] hover:border-l-[#121212]/20 hover:text-[#121212]"
                 }`
               }
             >
@@ -158,7 +158,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
 
         {/* User */}
-        <div className="p-3 border-t-4 border-[#121212]">
+        <div className="p-3 border-t-2 border-[#121212]">
           <div className="flex items-center gap-2 p-2 border-2 border-transparent hover:border-[#121212] hover:bg-[#F0F0F0] transition-all group">
             <div
               className={`w-8 h-8 flex items-center justify-center text-xs font-black border-2 border-[#121212] flex-shrink-0 ${tc.badge}`}

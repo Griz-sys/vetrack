@@ -82,10 +82,10 @@ export default function LogWorkModal({ date, existingActivity, onClose, onSaved 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#121212]/60">
-      <div className="bg-white border-4 border-[#121212] shadow-[8px_8px_0px_0px_#121212] w-full max-w-md overflow-hidden">
+      <div className="bg-white border-2 border-[#121212] shadow-[8px_8px_0px_0px_#121212] w-full max-w-md overflow-hidden">
 
         {/* Header — yellow block */}
-        <div className="flex items-center justify-between px-5 py-4 bg-[#F0C020] border-b-4 border-[#121212]">
+        <div className="flex items-center justify-between px-5 py-4 bg-[#F0C020] border-b-2 border-[#121212]">
           <div>
             <div className="font-black text-lg uppercase tracking-tight text-[#121212]">
               {existingActivity ? 'Edit Entry' : 'Log Work'}
@@ -105,12 +105,12 @@ export default function LogWorkModal({ date, existingActivity, onClose, onSaved 
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b-4 border-[#121212]">
+        <div className="flex border-b-2 border-[#121212]">
           {(['project', 'meeting'] as const).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`flex-1 py-3 text-sm font-black uppercase tracking-wider transition-all border-r-4 last:border-r-0 border-[#121212] ${
+              className={`flex-1 py-3 text-sm font-black uppercase tracking-wider transition-all border-r-2 last:border-r-0 border-[#121212] ${
                 tab === t
                   ? 'bg-[#121212] text-white'
                   : 'bg-white text-[#121212]/40 hover:bg-[#F0F0F0] hover:text-[#121212]'
@@ -221,7 +221,7 @@ export default function LogWorkModal({ date, existingActivity, onClose, onSaved 
         </div>
 
         {/* Footer */}
-        <div className="flex items-center gap-2 px-5 py-4 border-t-4 border-[#121212] bg-[#F0F0F0]">
+        <div className="flex items-center gap-2 px-5 py-4 border-t-2 border-[#121212] bg-[#F0F0F0]">
           {existingActivity && (
             <button
               onClick={handleDelete}

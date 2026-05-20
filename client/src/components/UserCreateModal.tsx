@@ -45,10 +45,10 @@ export default function UserCreateModal({ onClose, onCreated }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#121212]/60">
-      <div className="bg-white border-4 border-[#121212] shadow-[8px_8px_0px_0px_#1040C0] w-full max-w-sm overflow-hidden">
+      <div className="bg-white border-2 border-[#121212] shadow-[8px_8px_0px_0px_#1040C0] w-full max-w-sm overflow-hidden">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 bg-[#1040C0] border-b-4 border-[#121212]">
+        <div className="flex items-center justify-between px-5 py-4 bg-[#1040C0] border-b-2 border-[#121212]">
           <div>
             <div className="font-black text-lg uppercase tracking-tight text-white">New Account</div>
             <div className="text-xs font-bold text-white/60 uppercase tracking-wider mt-0.5">
@@ -176,7 +176,7 @@ export default function UserCreateModal({ onClose, onCreated }: Props) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center gap-2 px-5 py-4 border-t-4 border-[#121212] bg-[#F0F0F0]">
+        <div className="flex items-center gap-2 px-5 py-4 border-t-2 border-[#121212] bg-[#F0F0F0]">
           <button
             onClick={onClose}
             className="px-4 py-2 text-xs font-black uppercase tracking-wider text-[#121212] bg-white border-2 border-[#121212] shadow-[3px_3px_0px_0px_#121212] hover:bg-[#F0F0F0] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all ml-auto"

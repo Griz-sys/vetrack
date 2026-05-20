@@ -69,7 +69,7 @@ export default function NewProjectPage() {
   return (
     <div className="flex flex-col h-full overflow-auto bg-[#F0F0F0]">
       {/* Header */}
-      <div className="px-5 py-4 border-b-4 border-[#121212] bg-white">
+      <div className="px-5 py-4 border-b-2 border-[#121212] bg-white">
         <button
           onClick={() => navigate('/projects')}
           className="flex items-center gap-1 text-xs font-black uppercase tracking-wider text-[#121212]/50 hover:text-[#121212] mb-4 transition-colors"

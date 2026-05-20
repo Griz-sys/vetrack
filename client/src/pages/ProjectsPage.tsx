@@ -45,7 +45,7 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-3 border-b-4 border-[#121212] bg-white">
+      <div className="flex items-center justify-between px-5 py-3 border-b-2 border-[#121212] bg-white">
         <div className="flex items-center gap-4">
           <h1 className="text-lg font-black uppercase tracking-tight text-[#121212]">Projects</h1>
           {user?.role === 'DEV' && (
@@ -83,7 +83,7 @@ export default function ProjectsPage() {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5 animate-pulse">
+              <div key={i} className="bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5 animate-pulse">
                 <div className="h-5 bg-[#E0E0E0] w-3/4 mb-4" />
                 <div className="h-3 bg-[#E0E0E0] w-full mb-4" />
                 <div className="h-4 bg-[#E0E0E0] w-1/2" />
@@ -91,7 +91,7 @@ export default function ProjectsPage() {
             ))}
           </div>
         ) : projects.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 border-4 border-dashed border-[#121212]/30 bg-white">
+          <div className="flex flex-col items-center justify-center h-64 border-2 border-dashed border-[#121212]/30 bg-white">
             <div className="flex gap-3 mb-4">
               <div className="w-6 h-6 bg-[#1040C0] border-2 border-[#121212]" />
               <div className="w-6 h-6 rounded-full bg-[#D02020] border-2 border-[#121212]" />
@@ -115,10 +115,10 @@ export default function ProjectsPage() {
                 <div
                   key={p.id}
                   onClick={() => navigate(`/projects/${p.id}`)}
-                  className="bg-white border-4 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5 cursor-pointer hover:-translate-y-1 transition-transform relative overflow-hidden"
+                  className="bg-white border-2 border-[#121212] shadow-[6px_6px_0px_0px_#121212] p-5 cursor-pointer hover:-translate-y-1 transition-transform relative overflow-hidden"
                 >
                   {/* Corner geometric decoration */}
-                  <div className={`absolute top-0 right-0 w-8 h-8 border-l-4 border-b-4 border-[#121212] ${tc.badge.split(' ')[0]}`} />
+                  <div className={`absolute top-0 right-0 w-8 h-8 border-l-2 border-b-2 border-[#121212] ${tc.badge.split(' ')[0]}`} />
 
                   <div className="mb-3 pr-6">
                     <h3 className="font-black text-[#121212] text-base leading-tight mb-2 truncate uppercase">{p.name}</h3>

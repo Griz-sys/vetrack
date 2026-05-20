@@ -73,10 +73,10 @@ export default function TaskModal({ task, defaultDate, onClose, onSaved }: Props
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#121212]/60">
-      <div className="bg-white border-4 border-[#121212] shadow-[8px_8px_0px_0px_#D02020] w-full max-w-sm overflow-hidden">
+      <div className="bg-white border-2 border-[#121212] shadow-[8px_8px_0px_0px_#D02020] w-full max-w-sm overflow-hidden">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 bg-[#D02020] border-b-4 border-[#121212]">
+        <div className="flex items-center justify-between px-5 py-4 bg-[#D02020] border-b-2 border-[#121212]">
           <div>
             <div className="font-black text-lg uppercase tracking-tight text-white">
               {task ? 'Edit Task' : 'New Task'}
@@ -167,7 +167,7 @@ export default function TaskModal({ task, defaultDate, onClose, onSaved }: Props
         </div>
 
         {/* Footer */}
-        <div className="flex items-center gap-2 px-5 py-4 border-t-4 border-[#121212] bg-[#F0F0F0]">
+        <div className="flex items-center gap-2 px-5 py-4 border-t-2 border-[#121212] bg-[#F0F0F0]">
           {task && (
             <button
               onClick={handleDelete}

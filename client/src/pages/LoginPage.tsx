@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -10,7 +10,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: { preventDefault(): void }) {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -26,23 +26,21 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-[#F0F0F0] flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl flex border-4 border-[#121212] shadow-[8px_8px_0px_0px_#121212]">
+      <div className="w-full max-w-4xl flex border-2 border-[#121212] shadow-[8px_8px_0px_0px_#121212]">
 
         {/* Left: Blue decorative panel */}
         <div className="hidden md:flex w-1/2 bg-[#1040C0] flex-col items-center justify-center p-10 relative overflow-hidden">
-          {/* Geometric decoration */}
-          <div className="absolute top-6 left-6 w-16 h-16 bg-[#F0C020] border-4 border-[#121212] rotate-12" />
-          <div className="absolute bottom-10 right-6 w-20 h-20 rounded-full bg-[#D02020] border-4 border-[#121212] opacity-80" />
-          <div className="absolute top-1/2 right-8 w-10 h-10 bg-white border-4 border-[#121212] -rotate-12" />
+          <div className="absolute top-6 left-6 w-16 h-16 bg-[#F0C020] border-2 border-[#121212] rotate-12" />
+          <div className="absolute bottom-10 right-6 w-20 h-20 rounded-full bg-[#D02020] border-2 border-[#121212] opacity-80" />
+          <div className="absolute top-1/2 right-8 w-10 h-10 bg-white border-2 border-[#121212] -rotate-12" />
 
           <div className="relative z-10 text-center">
-            {/* Geometric logo large */}
             <div className="relative w-20 h-20 mx-auto mb-6">
               <div className="absolute top-0 left-0 w-9 h-9 bg-[#D02020] border-4 border-white" />
               <div className="absolute bottom-0 left-0 w-9 h-9 rounded-full bg-[#F0C020] border-4 border-white" />
               <div className="absolute top-1 right-0 w-9 h-9 bg-white border-4 border-white rotate-45" />
             </div>
-            <h1 className="font-black text-4xl uppercase tracking-tight text-white mb-3">WorkTrack</h1>
+            <h1 className="font-black text-4xl uppercase tracking-tight text-white mb-3">VeWork</h1>
             <p className="text-white/80 font-medium text-base leading-relaxed">
               Keep your team moving.<br />Track every hour, every project.
             </p>
@@ -97,7 +95,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#D02020] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-6 py-3 text-sm font-black uppercase tracking-wider hover:bg-[#D02020]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all disabled:opacity-50 mt-2"
+              className="w-full bg-[#1040C0] text-white border-2 border-[#121212] shadow-[4px_4px_0px_0px_#121212] px-6 py-3 text-sm font-black uppercase tracking-wider hover:bg-[#1040C0]/90 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all disabled:opacity-50 mt-2"
             >
               {loading ? 'Signing in…' : 'Sign In →'}
             </button>
