@@ -41,14 +41,14 @@ const TOOLS = [
   {
     name: 'get_team_calendar',
     description:
-      'Get the weekly activity calendar for a team (DEV or CIVIL). Returns each member\'s logged work, meetings, hours per day, and any blockers for the specified week.',
+      'Get the weekly activity calendar for a team. Returns each member\'s logged work, meetings, hours per day, and any blockers for the specified week.',
     inputSchema: {
       type: 'object',
       properties: {
         team: {
           type: 'string',
-          enum: ['DEV', 'CIVIL'],
-          description: 'Which team to query',
+          enum: ['DEV', 'CIVIL', 'ADMIN', 'DESIGN', 'MARKETING'],
+          description: 'Which team/department to query',
         },
         week_start: {
           type: 'string',
@@ -67,7 +67,7 @@ const TOOLS = [
       properties: {
         team: {
           type: 'string',
-          enum: ['DEV', 'CIVIL', 'ALL'],
+          enum: ['DEV', 'CIVIL', 'ADMIN', 'DESIGN', 'MARKETING', 'ALL'],
           description: 'Filter by team, or ALL for every project',
         },
         status: {
@@ -112,7 +112,7 @@ const TOOLS = [
       properties: {
         team: {
           type: 'string',
-          enum: ['DEV', 'CIVIL', 'ALL'],
+          enum: ['DEV', 'CIVIL', 'ADMIN', 'DESIGN', 'MARKETING', 'ALL'],
           description: 'Filter blockers by team. Defaults to ALL.',
         },
         days_back: {
@@ -163,7 +163,7 @@ const TOOLS = [
       properties: {
         team: {
           type: 'string',
-          enum: ['DEV', 'CIVIL', 'ALL'],
+          enum: ['DEV', 'CIVIL', 'ADMIN', 'DESIGN', 'MARKETING', 'ALL'],
           description: 'Filter by team. Defaults to ALL.',
         },
       },
@@ -179,7 +179,7 @@ const TOOLS = [
         week_start: { type: 'string', description: 'ISO date YYYY-MM-DD of the Monday. Defaults to current week.' },
         team: {
           type: 'string',
-          enum: ['DEV', 'CIVIL', 'ALL'],
+          enum: ['DEV', 'CIVIL', 'ADMIN', 'DESIGN', 'MARKETING', 'ALL'],
           description: 'Filter by team. Defaults to ALL.',
         },
       },
@@ -636,7 +636,7 @@ async function handleGetHoursReport(args: Record<string, unknown>) {
 // ─── server setup ────────────────────────────────────────────────────────────
 
 const server = new Server(
-  { name: 'worktrack-mcp', version: '1.0.0' },
+  { name: 'vework-mcp', version: '1.0.0' },
   { capabilities: { tools: {} } }
 );
 

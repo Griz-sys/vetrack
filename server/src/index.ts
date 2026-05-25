@@ -8,6 +8,7 @@ import subtaskRoutes from './routes/subtasks';
 import activityRoutes from './routes/activities';
 import taskRoutes from './routes/tasks';
 import summaryRoutes from './routes/summary';
+import contentCalendarRoutes from './routes/contentCalendar';
 import { startCronJobs } from './services/cron';
 
 const app = express();
@@ -24,6 +25,7 @@ app.use('/api/subtasks', subtaskRoutes);
 app.use('/api/activities', activityRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/summary', summaryRoutes);
+app.use('/api/content-calendar', contentCalendarRoutes);
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }));
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { addWeeks, subWeeks, format, isWeekend } from 'date-fns';
 import { useAuth } from '../context/AuthContext';
 import api from '../lib/api';
-import { User, Activity, Task, Team } from '../types';
+import { User, Activity, Task, Team, ContentItem } from '../types';
 import { getWeekDays, formatDateFull, getActivityChipColor, getProjectColor, formatHours, getInitials, ALL_TEAMS, getTeamColors } from '../lib/utils';
 import LogWorkModal from '../components/LogWorkModal';
 import TaskModal from '../components/TaskModal';
@@ -15,6 +15,7 @@ export default function CalendarPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [activities, setActivities] = useState<Activity[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [contentItems, setContentItems] = useState<ContentItem[]>([]);
   const [modal, setModal] = useState<{ date: Date; userId: string; existing?: Activity } | null>(null);
   const [taskModal, setTaskModal] = useState<{ task?: Task; defaultDate?: Date } | null>(null);
   const [loading, setLoading] = useState(true);
@@ -52,6 +53,29 @@ export default function CalendarPage() {
   }, [team, weekStart, user]);
 
   useEffect(() => { load(); }, [load]);
+
+  useEffect(() => {
+    api.get('/content-calendar').then((r) => setContentItems(r.data)).catch(() => {});
+  }, []);
+
+  function getContentForDay(date: Date): ContentItem[] {
+    const ds = formatDateFull(date);
+    return contentItems.filter((c) => c.date === ds);
+  }
+
+  function contentTypeShort(type: string): string {
+    const t = type.toLowerCase();
+    if (t.includes('reel') || t.includes('video')) return 'Reel';
+    if (t.includes('carousel')) return 'Carousel';
+    if (t.includes('photo')) return 'Photo';
+    return type;
+  }
+
+  function contentChipStyle(status: string): string {
+    if (status === 'Posted') return 'bg-[#E0F0E8] text-[#107050] border-[#107050]/25';
+    if (status === 'On Hold') return 'bg-[#FEF3C7] text-[#92400E] border-[#92400E]/25';
+    return 'bg-[#EDE9FE] text-[#6D28D9] border-[#6D28D9]/25'; // New
+  }
 
   function getCellActivities(userId: string, date: Date): Activity[] {
     const dateStr = formatDateFull(date);
@@ -245,6 +269,17 @@ export default function CalendarPage() {
                           <span className="truncate">{task.title}</span>
                         </div>
                       ))}
+                      {getContentForDay(day).map((item, idx) => (
+                        <div
+                          key={`content-${idx}`}
+                          title={item.visualCopy || item.description}
+                          className={`px-1.5 py-1 text-xs flex items-center gap-1 border ${contentChipStyle(item.status)}`}
+                        >
+                          <span className="flex-shrink-0 text-[10px]">◆</span>
+                          <span className="truncate flex-1">{contentTypeShort(item.type)}</span>
+                          <span className="flex-shrink-0 text-[10px] opacity-60">{item.status}</span>
+                        </div>
+                      ))}
                     </div>
 
                     {/* Footer */}
@@ -308,6 +343,15 @@ export default function CalendarPage() {
                   >
                     <div className="opacity-70">{format(day, 'EEE')}</div>
                     <div className="text-base mt-0.5 font-black">{format(day, 'd')}</div>
+                    {getContentForDay(day).map((item, idx) => (
+                      <div
+                        key={idx}
+                        title={item.visualCopy || item.description}
+                        className={`mt-1 text-[9px] px-1 py-0.5 border truncate max-w-full normal-case tracking-normal font-normal ${contentChipStyle(item.status)}`}
+                      >
+                        {contentTypeShort(item.type)}
+                      </div>
+                    ))}
                   </th>
                 );
               })}

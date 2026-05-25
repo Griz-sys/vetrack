@@ -64,6 +64,19 @@ export interface Activity {
   createdAt?: string;
 }
 
+export interface ContentItem {
+  type: string;
+  channel: string;
+  visualCopy: string;
+  caption: string;
+  description: string;
+  rawDate: string;
+  date: string; // YYYY-MM-DD
+  status: string;
+  link: string;
+  remarks: string;
+}
+
 export interface AuthState {
   user: User | null;
   token: string | null;
